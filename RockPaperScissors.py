@@ -1,21 +1,30 @@
 import random
 
+items = {1: 'rock', 2: 'paper', 3: 'scissors'}
+
 
 # 0 - rock, 1 - paper, 2 - scissors
 
-def rock_paper_scissors(p_ch):
+def rock_paper_scissors(p_ch, i):
     result = ''
-    r = random.randint(0, 2)
-    if (p_ch < r) > -1:
+    print(i)
+    r = random.randint(1, 3)
+    if (p_ch == 'rock' and i[r] == 'scissors') or (p_ch == 'scissors' and i[r] == 'paper') or (
+            p_ch == 'paper' and i[r] == 'rock'):
         result = 'You win!'
-    elif (p_ch > r) < 3:
+    elif (p_ch == 'scissors' and i[r] == 'rock') or (p_ch == 'paper' and i[r] == 'scissors') or (
+            p_ch == 'rock' and i[r] == 'paper'):
         result = 'You lose!'
-    elif 3 < (p_ch == r) < -1:
+    elif p_ch == i[r]:
         result = 'Draw!'
     else:
-        result = 'Check your input!'
-    return result
+        result = 'Error!'
+    return result, r
 
 
-print(rock_paper_scissors(int(input('''Rock, Paper or Scissors? 
-> '''))))
+while True:
+    menu_mode = input('''Rock, Paper or Scissors? \n> ''')
+    if menu_mode == '/quit':
+        break
+    else:
+        print(rock_paper_scissors(menu_mode, items))
