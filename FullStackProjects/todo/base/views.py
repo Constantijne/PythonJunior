@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-
-def index(requests):
-    return HttpResponse('Hello. It`s ToDo App!)')
+def taskList(request):
+    return HttpResponse('To Do List')
 # Create your views here.
